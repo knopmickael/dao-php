@@ -30,6 +30,31 @@
             $this->user_senha = $value;
         }
 
+        public function carregarUsuario($id){
+            
+            $sql = new Sql();
+
+            $resultado = $sql->select("SELECT * FROM users WHERE user_id = :ID", array(
+                ":ID"=>$id
+            ));
+
+            if($resultado!=NULL){
+                $linha = $resultado[0];
+                $this->setUser_id($linha['user_id']);
+                $this->setUser_login($linha['user_login']);
+                $this->setUser_senha($linha['user_senha']);
+            }
+
+        }
+
+        public function __toString() {
+            return json_encode(array(
+                $this->getUser_id(),
+                $this->getUser_login(),
+                $this->getUser_senha()
+            ));
+        }
+
     }
 
 ?>

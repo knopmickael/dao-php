@@ -2,10 +2,23 @@
 
     require_once "config.php";
 
-    $sql = new Sql();
+    $usuario = new Usuario(); 
 
-    $sql->query("INSERT INTO users (user_login, user_senha) VALUES ('TESTANDO RONALDO', 'SENHA BAIT 123')");
+    $usuario->carregarUsuario(34);
 
+    echo $usuario;
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // $sql = new Sql();
+
+    // $login="toma essa";
+    // $password="safadinho";
+
+    // $sql->query("INSERT INTO users (user_login, user_senha) VALUES (:LOGIN, :PASSWORD)", array(
+    //     ":LOGIN"=>$login,
+    //     ":PASSWORD"=>$password
+    // ));
 
     // $query = $sql->select("SELECT * FROM users");
 
