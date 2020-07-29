@@ -2,10 +2,14 @@
 
     class Usuario {
 
+        // ATRIBUTOS...
+
         private $user_id;
         private $user_login;
         private $user_senha;
-    
+                 
+        // GETTERS E SETTERS...
+
         public function getUser_id(){
             return $this->user_id;
         }
@@ -30,6 +34,10 @@
             $this->user_senha = $value;
         }
 
+        // MÉTODOS...
+        
+        // Carrega um usuário através do user_id
+
         public function carregarUsuario($id){
             
             $sql = new Sql();
@@ -42,7 +50,47 @@
 
         }
 
+        // Carrega uma lista com todos usuários do banco
+
+        public static function getList(){
+            
+            $sql = new Sql();
+            
+            return json_encode($sql->select("SELECT * FROM users ORDER BY user_id DESC"));
+            
+        }
+
+        // Realiza uma pesquisa de user_login registrados no banco
+        
+        public static function search($pesquisa){
+            
+            $sql = new Sql();
+            
+            return json_encode($sql->select("SELECT * FROM users WHERE user_login LIKE :VALUE", array(
+                ":VALUE"=>"%".$pesquisa."%"
+            )));
+            
+        }
+
+        // Autentica um usuário registrado no banco
+
+        public function logar($login, $senha){
+            
+            $sql = new Sql();
+            
+            $resultado = $sql->select("SELECT * FROM users WHERE user_login = :LOGIN AND user_senha = :PASSWORD", array(
+                ":LOGIN"=>$login,
+                ":PASSWORD"=>$senha
+            ));
+            
+            $this->carregarDados($resultado);
+            
+        }
+
+        // Seta os dados do usuário registrado no banco no objeto
+        
         public function carregarDados($resultado){
+
             if($resultado!=NULL){
                 $linha = $resultado[0];
                 $this->setUser_id($linha['user_id']);
@@ -51,45 +99,34 @@
             } else {
                 throw new Exception("ERRO - USUÁRIO NÃO ENCONTRADO.");
             }
-        }
-
-        public static function getList(){
-            
-            $sql = new Sql();
-
-            return json_encode($sql->select("SELECT * FROM users ORDER BY user_id DESC"));
 
         }
 
-        public static function search($pesquisa){
+        // Insere um usuário no banco
+
+        public function inserirUsuario($login, $senha){
+
             $sql = new Sql();
 
-            return json_encode($sql->select("SELECT * FROM users WHERE user_login LIKE :VALUE", array(
-                ":VALUE"=>"%".$pesquisa."%"
-            )));
-        }
-
-        public function logar($login, $senha){
-            
-            $sql = new Sql();
-
-            $resultado = $sql->select("SELECT * FROM users WHERE user_login = :LOGIN AND user_senha = :PASSWORD", array(
+            $sql->query("INSERT INTO users (user_login, user_senha) VALUES (:LOGIN, :PASSWORD)", array(
                 ":LOGIN"=>$login,
                 ":PASSWORD"=>$senha
             ));
 
-            $this->carregarDados($resultado);
-
         }
 
+        // Função mágica que permite aplicar um echo no objeto
+
         public function __toString() {
+
             return json_encode(array(
                 $this->getUser_id(),
                 $this->getUser_login(),
                 $this->getUser_senha()
             ));
+
         }
-
+        
     }
-
+    
 ?>
