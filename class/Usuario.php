@@ -132,6 +132,24 @@
 
         }
 
+        // Exclui um usuário do banco
+
+        public function deletarUsuario($id){
+
+            $sql = new Sql();
+
+            $this->carregarUsuario($id);
+
+            $sql->query("DELETE FROM users WHERE user_id = :ID", array(
+                ":ID"=>$id
+            ));
+
+            if($this->user_id){
+                echo 'Usuário deletado.';
+            }
+
+        }
+
         // Função mágica que permite aplicar um echo no objeto
 
         public function __toString() {
