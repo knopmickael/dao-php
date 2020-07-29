@@ -102,13 +102,30 @@
 
         }
 
-        // Insere um usuário no banco
+        // Insere um usuário no banco através duma Procedure
 
         public function inserirUsuario($login, $senha){
 
             $sql = new Sql();
 
-            $sql->query("INSERT INTO users (user_login, user_senha) VALUES (:LOGIN, :PASSWORD)", array(
+            $retorno = $sql->select("CALL sp_insert_user (:LOGIN, :PASSWORD)", array(
+                ":LOGIN"=>$login,
+                ":PASSWORD"=>$senha
+            ));
+
+            $this->carregarDados($retorno);
+
+        }
+
+        // Atualiza um usuário do banco
+
+        public function attUsuario($login, $senha){
+
+            $sql = new Sql();
+
+            $sql->query("UPDATE users SET user_login = :LOGIN, user_senha = :PASSWORD WHERE user_id = :ID",
+            array(
+                ":ID"=>$this->getUser_id(),
                 ":LOGIN"=>$login,
                 ":PASSWORD"=>$senha
             ));
