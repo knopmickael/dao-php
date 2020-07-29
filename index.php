@@ -4,7 +4,8 @@
 
     $sql = new Sql();
 
-    $teste = new Usuario();
+    $sql->query("INSERT INTO users (user_login, user_senha) VALUES ('TESTANDO RONALDO', 'SENHA BAIT 123')");
+
 
     // $query = $sql->select("SELECT * FROM users");
 

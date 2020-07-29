@@ -10,15 +10,21 @@
 
         }
 
-        public function query($query, $params = array()) {
+        private function setParams($statement, $parameters = array()) {
+            foreach ($parameters as $key => $value) {
+                $this->setParam($key, $value);
+            }
+        }
+
+        private function setParam($statement, $parameters = array()) {
+                $statement->bindParams($key, $value);
+        }
+
+        public function query($query, $params = array()){
 
             $stmt = $this->conn->prepare($query);
 
-            foreach ($params as $chave => $valor) {
-
-                $stmt->bindParam($chave, $valor);
-
-            }
+            $this->setParams($stmt, $params);
 
             $stmt->execute();
 
