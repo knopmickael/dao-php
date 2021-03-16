@@ -6,23 +6,13 @@
 
     // $usuario = new Usuario();
 
-    // $usuario->deletarUsuario(27);
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    // $usuario = new Usuario();
+    // $usuario->inserirUsuario('teste', 'teste');
 
     // $usuario->carregarUsuario(1);
 
-    // $usuario->attUsuario('novoLogi2222nAtt','novaSenhaAtt');
+    // $usuario->attUsuario('teste','teste');
 
-    // echo $usuario;
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    // $usuario = new Usuario();
-
-    // $usuario->inserirUsuario('ciclano', 'senhaFulano');
+    // $usuario->deletarUsuario(1);
 
     // echo $usuario;
 
@@ -30,13 +20,9 @@
     
     // $usuario = new Usuario();
 
-    // $usuario->inserirUsuario('rodaao','titicadegalinha');
+    // $usuario->inserirUsuario('teste','teste');
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    // $usuario = new Usuario();
-
-    // $usuario->logar('usuarioNovo', 'senhaNova');
+    // $usuario->logar('teste', 'teste');
 
     // echo $usuario;
 
@@ -50,22 +36,12 @@
 
     // $listar = Usuario::getList();
 
-    // echo $listar;
-    
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    // $usuario = new Usuario(); 
-
-    // $usuario->carregarUsuario(34);
-
-    // echo $usuario;
-    
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // $sql = new Sql();
 
-    // $login="toma essa";
-    // $password="safadinho";
+    // $login="teste";
+    // $password="teste";
 
     // $sql->query("INSERT INTO users (user_login, user_senha) VALUES (:LOGIN, :PASSWORD)", array(
     //     ":LOGIN"=>$login,
@@ -87,8 +63,8 @@
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // $inserir = $sql->conn->prepare("INSERT INTO users (user_login, user_senha) VALUES (?, ?)");
-    // $login = 'xd';
-    // $senha = 'xdd';
+    // $login = 'teste';
+    // $senha = 'teste';
 
     // $inserir->execute(array(
     //     $login,
@@ -97,12 +73,12 @@
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    //     $login='testeMaroto';
-    //     $senha='senhaMarota';
+    // $login = 'teste';
+    // senha = 'teste';
 
-    // // $sql->query("INSERT INTO users (user_login, user_senha) VALUES (:LOGIN, :PASSWORD)", array(
-    // //     ':LOGIN'=>$login,
-    // //     ':PASSWORD'=>$senha
-    // // ));
+    // $sql->query("INSERT INTO users (user_login, user_senha) VALUES (:LOGIN, :PASSWORD)", array(
+    //  ':LOGIN'=>$login,
+    //  ':PASSWORD'=>$senha
+    // ));
     
 ?>
